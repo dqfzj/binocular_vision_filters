@@ -18,3 +18,6 @@ One dimensional Kalman filter
 一次、二次、三次指数平滑，简单移动平均，指数移动平均
 maAndEs_data_CmpOfAlgo：一次、二次、三次指数平滑，简单移动平均，指数移动平均 五种算法的比较
 maAndEs_data_CmpOfAlpha：一次、二次、三次指数平滑，简单移动平均，指数移动平均 五种算法alpha系数改变的比较
+
+### 5.gaussianFilter
+高斯滤波
