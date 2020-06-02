@@ -8,3 +8,8 @@ One dimensional Kalman filter
 
 ### 4.Least Mean Square
 使用64阶 LMS 动态滤波
+
+### 5.arithmeticMeanFilter
+算数均值滤波
+### 6.middleFilter
+中值滤波
