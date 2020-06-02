@@ -5,3 +5,6 @@ it's a example of kalman filter
 Two dimensional Kalman filter
 ### 3.kalman.py
 One dimensional Kalman filter
+
+### 4.Least Mean Square
+使用64阶 LMS 动态滤波
