@@ -69,9 +69,9 @@ if __name__ == "__main__":
     noise_size = itr
 
 
-    M = 64  # 滤波器的阶数
+    M = 32  # 滤波器的阶数
 
-    mu = 0.001  # 步长因子
+    mu = 0.01  # 步长因子
 
     """对数据源进行更换"""
 
@@ -79,48 +79,32 @@ if __name__ == "__main__":
     xls = pd.ExcelFile(path)
     df = xls.parse('单点时序')
 
-    datas = df['no.1'][:1000]/100
+    datas = df['no.6'][:1000]/100
 
 
     # 调用LMS算法
     (yn, en) = LMS(datas,M, mu, itr)
-
-    df.insert(6, 'lms', yn*100, )
-    df.to_excel('C:\\Users\\Feng\\Desktop\\data2.xlsx', sheet_name='Sheet1', index=False)
+    df.insert(10, 'lms', yn*100, )
+    df.to_excel('C:\\Users\\Feng\\Desktop\\output.xlsx', sheet_name='Sheet1', index=False)
     xls.close()
-
-
 
 
     # 画出图形
 
     plt.figure(1)
-
-    # plt.plot(xn,label="$xn$")
-    # plt.plot(xn,label="$xn$")
-    plt.plot(datas, label="$dn$")
-    plt.plot(yn, label="$yn$")
-
+    plt.plot(datas*100, label="$dn$")
+    plt.plot(yn*100, label="$yn$")
     plt.xlabel("Time(s)")
-
     plt.ylabel("Volt")
-
-    plt.title("original signal xn and processing signal yn  64  0.001")
-
+    plt.title("original signal xn and processing signal yn  10  0.001")
     plt.legend()
 
     plt.figure(2)
-
     plt.plot(en, label="$en$")
-
     plt.xlabel("Time(s)")
-
     plt.ylabel("Volt")
-
     plt.title("error between processing signal yn and desired voltage dn")
-
     plt.legend()
-
     plt.show()
 
 
