@@ -8,9 +8,9 @@ def boxave(list):
     # 状态转移矩阵
     f_mat = np.mat([[1, dt, 0.5 * dt * dt], [0, 1, dt], [0, 0, 1]])
     # 初始协方差矩阵
-    p_mat = np.mat([[0.01, 0, 0], [0, 0.01, 0], [0, 0, 0.0001]])
+    p_mat = np.mat([[0.01, 0, 0], [0, 0.0001, 0], [0, 0, 0.0001]])
     # 状态转移协方差
-    q_mat = np.mat([[1, 0, 0], [0, 0.01, 0], [0, 0, 0.0001]])
+    q_mat = np.mat([[1, 0, 0], [0, 0.1, 0], [0, 0, 0.01]])
     # 定义观测矩阵
     h_mat = np.mat([1, 0, 0])
     # 定义观测噪声协方差
@@ -26,7 +26,7 @@ def boxave(list):
     return predicts
 
 if __name__ == '__main__':
-    path = 'data.xlsx'
+    path = 'C:\\Users\\Feng\\Desktop\\data.xlsx'
     xls = pd.ExcelFile(path)
     df = xls.parse('单点时序')
 
@@ -35,5 +35,5 @@ if __name__ == '__main__':
     for i in range(6):
         after.append(0)
     df.insert(6, 'boxave', after, )
-    df.to_excel('data3.xlsx', sheet_name='Sheet1', index=False)
+    df.to_excel('C:\\Users\\Feng\\Desktop\\K0.xlsx', sheet_name='Sheet1', index=False)
     xls.close()

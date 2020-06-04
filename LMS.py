@@ -46,7 +46,7 @@ def LMS(xn, M, mu, itr):
 
         en[k] = d - y
 
-        W[k] = np.add(W[k - 1], 2 * mu * en[k] * x)  # 跟新权重
+        W[k] = np.add(W[k - 1], 2 * mu * en[k] * x)  # 更新权重
 
     # 求最优时滤波器的输出序列
 
@@ -64,14 +64,12 @@ if __name__ == "__main__":
 
     # 参数初始化
     itr = 1000  # 采样的点数
-    mu = 0
     sigma = 0.12
     noise_size = itr
 
-
     M = 32  # 滤波器的阶数
 
-    mu = 0.01  # 步长因子
+    mu = 0.001  # 步长因子
 
     """对数据源进行更换"""
 
