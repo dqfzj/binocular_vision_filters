@@ -21,3 +21,6 @@ maAndEs_data_CmpOfAlpha：一次、二次、三次指数平滑，简单移动平
 
 ### 8.gaussianFilter
 高斯滤波
+
+### 9.planeFitting
+平面拟合
