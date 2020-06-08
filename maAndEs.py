@@ -1,11 +1,9 @@
 '''demo'''
 import time
 import pandas as pd
-<<<<<<< HEAD
 import numpy as np
 from statsmodels.tsa.holtwinters import SimpleExpSmoothing
 
-=======
 from collections import deque
 import numpy as np
 '''
@@ -48,7 +46,6 @@ class Boxave(object):
             tsum = tsum + list[i] - list[i - 5]
             backlist.append(tsum / winsize)
         return backlist
->>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
 
 def boxave(list):
     winsize = 5
@@ -164,22 +161,7 @@ if __name__ == '__main__':
     df = xls.parse('单点时序')
 
     datas = df[:1000]
-<<<<<<< HEAD
-=======
-    '''
->>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
-    print(datas.values[0][5])
-    print(datas.values[1][5])
-    print(datas.values[2][5])
-    print(datas.values[3][5])
-<<<<<<< HEAD
 
-    dataSet = 'no.5'
-    alphaValue = 0.002
-
-    after = boxave(datas[dataSet])
-=======
-    '''
     dataSet = 'no.5'
     alphaValue = 0.002
 
@@ -191,7 +173,7 @@ if __name__ == '__main__':
         after.append(temp)
     #after=box.get_back_list()
 
->>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
+
     ma_data = ma(datas, dataSet)
     ewm_data = ewm(datas, dataSet, alphaValue)
     for i in range(4):
