@@ -4,7 +4,7 @@ import pandas as pd
 from collections import deque
 import numpy as np
 '''
-edit by xhj
+edit by 徐鸿嘉
 class Boxave
 input: single value
 ouput:
