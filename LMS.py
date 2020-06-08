@@ -10,7 +10,10 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+<<<<<<< HEAD
 import time
+=======
+>>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
 
 # 定义向量的内积
 def multiVector(A, B):
@@ -78,6 +81,7 @@ if __name__ == "__main__":
     xls = pd.ExcelFile(path)
     df = xls.parse('单点时序')
 
+<<<<<<< HEAD
     datas = df['no.5'][:1000]/100
 
 
@@ -86,6 +90,13 @@ if __name__ == "__main__":
     (yn, en) = LMS(datas,M, mu, itr)
     end=time.time()
     print(end-start)
+=======
+    datas = df['no.6'][:1000]/100
+
+
+    # 调用LMS算法
+    (yn, en) = LMS(datas,M, mu, itr)
+>>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
     df.insert(10, 'lms', yn*100, )
     df.to_excel('C:\\Users\\Feng\\Desktop\\output.xlsx', sheet_name='Sheet1', index=False)
     xls.close()

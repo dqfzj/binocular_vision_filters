@@ -1,5 +1,8 @@
 import pandas as pd
+<<<<<<< HEAD
 import time
+=======
+>>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
 import numpy as np
 def boxave(list):
     dt = 1 / 30
@@ -26,17 +29,25 @@ def boxave(list):
         predicts.append(x_predict[0,0])
     return predicts
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
 if __name__ == '__main__':
     path = 'C:\\Users\\Feng\\Desktop\\data.xlsx'
     xls = pd.ExcelFile(path)
     df = xls.parse('单点时序')
 
+<<<<<<< HEAD
     datas = df['no.5'][:1000]
     start = time.time()
     after = boxave(datas)
     end = time.time()
     print(end-start)
+=======
+    datas = df['no.1'][:1000]
+    after = boxave(datas)
+>>>>>>> 920f5321bf3be6107c7f8793474adaf295908cd7
     for i in range(6):
         after.append(0)
     df.insert(6, 'boxave', after, )
