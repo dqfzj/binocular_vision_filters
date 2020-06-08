@@ -1,9 +1,48 @@
 '''demo'''
 import time
 import pandas as pd
+from collections import deque
 import numpy as np
-from statsmodels.tsa.holtwinters import SimpleExpSmoothing
-
+'''
+edit by xhj
+class Boxave
+input: single value
+ouput:
+'''
+class Boxave(object):
+    def __init__(self,set_win_size=5):
+        self.backlist=[]
+        self.input_num=0
+        self.tsum=0
+        self.win_size=set_win_size
+        self.win_q=deque(maxlen=set_win_size)
+    def data_in(self,value):
+        if self.input_num<=self.win_size:
+            self.backlist.append(value)
+            self.win_q.append(value)
+            self.input_num=self.input_num+1
+            if self.input_num==self.win_size:
+                self.tsum=sum(self.backlist[:self.win_size])
+                self.input_num = self.input_num + 1
+            return value
+        else:
+            val_win_size_before = self.win_q.popleft()
+            self.win_q.append(value)
+            self.tsum=self.tsum+value-val_win_size_before
+            self.backlist.append(self.tsum/self.win_size)
+            return self.tsum/self.win_size
+    def get_back_list(self):
+        return self.backlist
+    def boxave_list_to_list(self,list):
+        winsize = 5
+        tsum = sum(list[:5])
+        backlist = []
+        for i in list[:5]:
+            backlist.append(i)
+        for i in range(5, len(list)):
+            tsum = tsum + list[i] - list[i - 5]
+            backlist.append(tsum / winsize)
+        return backlist
 
 def boxave(list):
     winsize = 5
@@ -119,15 +158,23 @@ if __name__ == '__main__':
     df = xls.parse('单点时序')
 
     datas = df[:1000]
+    '''
     print(datas.values[0][5])
     print(datas.values[1][5])
     print(datas.values[2][5])
     print(datas.values[3][5])
-
+    '''
     dataSet = 'no.5'
     alphaValue = 0.002
 
-    after = boxave(datas[dataSet])
+    #after = boxave(datas[dataSet])
+    box=Boxave(set_win_size=5)
+    after=[]
+    for i,data in enumerate(datas[dataSet]):
+        temp = box.data_in(data)
+        after.append(temp)
+    #after=box.get_back_list()
+
     ma_data = ma(datas, dataSet)
     ewm_data = ewm(datas, dataSet, alphaValue)
     for i in range(4):
